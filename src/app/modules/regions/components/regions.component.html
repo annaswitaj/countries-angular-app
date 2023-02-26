@@ -1,0 +1,10 @@
+<div class="regions">
+  <div class="regions__title">Wybierz region</div>
+  <div class="regions__container">
+    <div *ngFor="let region of regions" class="regions__container-card">
+      <a mat-raised-button class="regions__button" routerLink="{{ region }}">
+        {{ region }}
+      </a>
+    </div>
+  </div>
+</div>

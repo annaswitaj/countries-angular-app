@@ -1,0 +1,27 @@
+@import '_variables';
+.container-navbar {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background-color: $background-color;
+}
+
+.navbar {
+  max-width: $max-width;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.domain-icon {
+  padding: 0 0 0.2rem 0;
+  color: $bright-text-color;
+  cursor: pointer;
+}
+
+.name {
+  font-weight: bold;
+  padding-left: 0.3rem;
+  color: $bright-text-color;
+  cursor: pointer;
+}

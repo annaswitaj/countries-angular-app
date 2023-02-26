@@ -1,0 +1,29 @@
+@import '_variables';
+
+.container-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  height: $header-height;
+}
+
+.footer {
+  max-width: $max-width;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.copyright {
+  color: rgba(0, 0, 0, 0.54);
+}
+.about {
+  font-weight: bold;
+  padding: 0.1rem;
+  //background-color: $background-color !important;
+}
+
+.about ::ng-deep .mdc-button__label {
+  padding: 0.9rem;
+}
