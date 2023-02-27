@@ -1,2 +1,36 @@
-<p>region works!</p>
-<a mat-raised-button class="regions__button" routerLink="{{ regionName }}"></a>
+<div class="region" ngClass.lt-md="mobile">
+  <div class="region__header-container">
+    <div class="region__title">Region: {{ regionName }}</div>
+    <a
+      mat-raised-button
+      class="regions__button"
+      routerLink="../"
+      color="primary"
+    >
+      cofnij
+    </a>
+  </div>
+
+  <mat-table
+    *ngIf="dataSource.length !== 0"
+    [dataSource]="dataSource"
+    class="region__table mat-elevation-z8"
+  >
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef>Flaga</mat-header-cell>
+      <mat-cell *matCellDef="let element" routerLink="{{ element.name }}"
+        ><img class="img__flag" [src]="element.flag" loading="lazy"
+      /></mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Nazwa Państwa</mat-header-cell>
+      <mat-cell *matCellDef="let element" routerLink="{{ element.name }}">{{
+        element.name
+      }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>

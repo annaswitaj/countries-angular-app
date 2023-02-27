@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
+import {
+  CountriesTable,
+  CountryGeneral,
+} from 'src/app/core/models/country.model';
+
 import { PublicService } from 'src/app/core/sevices/public.service';
 
 @Component({
@@ -9,21 +15,35 @@ import { PublicService } from 'src/app/core/sevices/public.service';
 })
 export class RegionComponent implements OnInit {
   regionName!: string | null;
+  displayedColumns: string[] = ['flag', 'name'];
+  dataSource: CountriesTable[] = [];
+  countries!: CountryGeneral[] | undefined;
+
   constructor(
     private publicService: PublicService,
-    private _Activatedroute: ActivatedRoute
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.regionName =
-      this._Activatedroute.snapshot?.paramMap?.get('regionName');
+    this.regionName = this.activatedRoute.snapshot.paramMap.get('regionName');
+    console.log(this.regionName);
 
     this.getCountriesByRegion();
   }
 
   private getCountriesByRegion(): void {
-    this.publicService.getCountriesByRegion('Africa').subscribe((regions) => {
-      console.log(regions);
-    });
+    if (this.regionName) {
+      this.publicService
+        .getCountriesByRegion(this.regionName)
+        .subscribe((countries) => {
+          this.countries = countries;
+          this.countries.map((country) => {
+            this.dataSource.push({
+              flag: country.flags.png,
+              name: country.name.common,
+            });
+          });
+        });
+    }
   }
 }
