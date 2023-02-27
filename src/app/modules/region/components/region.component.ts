@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NotFoundError, Observable } from 'rxjs';
 
 import {
   CountriesTable,

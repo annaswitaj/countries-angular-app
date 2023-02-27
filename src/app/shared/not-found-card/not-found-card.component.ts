@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class NotFoundCardComponent {
   @Input() value!: string | null;
+  @Input() area!: string | null;
 }

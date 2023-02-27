@@ -12,6 +12,7 @@ export class CountryComponent implements OnInit {
   countryDetails!: CountryDetails;
   countryCode!: string | null;
   currencies!: Currency[];
+  showNotFoundMessage = false;
 
   constructor(
     private publicService: PublicService,
@@ -20,7 +21,6 @@ export class CountryComponent implements OnInit {
 
   ngOnInit(): void {
     this.countryCode = this.activatedRoute.snapshot.paramMap.get('countryCode');
-    console.log(this.countryCode);
 
     this.getCountryDetailsByName();
   }
@@ -31,16 +31,18 @@ export class CountryComponent implements OnInit {
 
   private getCountryDetailsByName(): void {
     if (this.countryCode) {
-      this.publicService
-        .getCountryDetailsByName(this.countryCode)
-        .subscribe((countryDetails) => {
+      this.publicService.getCountryDetailsByName(this.countryCode).subscribe(
+        (countryDetails) => {
           this.countryDetails = countryDetails;
-          console.log(this.countryDetails, countryDetails);
 
           this.currencies = Object.values(countryDetails.currencies);
-          console.log(this.currencies);
-          console.log(this.countryDetails);
-        });
+        },
+        (err) => {
+          if (err.status == 404 || err.status == 400) {
+            this.showNotFoundMessage = true;
+          }
+        }
+      );
     }
   }
 }

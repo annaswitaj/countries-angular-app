@@ -9,18 +9,10 @@
   align-items: center;
   row-gap: 2rem;
 }
-.region__header-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.region__title {
-  font-size: $title-font-size;
-  font-weight: bold;
-  margin: 2rem 0;
-}
 
+.region__header {
+  width: 100%;
+}
 .region__table {
   margin-bottom: 2rem;
 }

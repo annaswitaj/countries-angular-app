@@ -39,7 +39,6 @@ export class PublicService {
   }
 
   getCountryDetailsByName(countryCode: string): Observable<CountryDetails> {
-    console.log(this._countryDetails);
     if (this._countryDetails && this._countryDetails.get(countryCode)) {
       return of(
         this._countryDetails.get(countryCode)
@@ -51,7 +50,6 @@ export class PublicService {
         )
         .pipe(
           tap((countryDetails: CountryDetails) => {
-            console.log(countryDetails);
             this._countryDetails.set(countryCode, countryDetails);
           }),
           catchError((error: HttpErrorResponse) =>

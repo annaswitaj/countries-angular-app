@@ -13,7 +13,6 @@ specifiers:
   '@angular/compiler': ~15.1.0
   '@angular/compiler-cli': ~15.1.0
   '@angular/core': ~15.1.0
-  '@angular/flex-layout': 15.0.0-beta.42
   '@angular/forms': ~15.1.0
   '@angular/language-service': ~15.1.0
   '@angular/material': ^15.2.0
@@ -53,7 +52,6 @@ dependencies:
   '@angular/common': 15.1.5_bj7gay3f2iqhd2jhj4xbvfa7uq
   '@angular/compiler': 15.1.5_@angular+core@15.1.5
   '@angular/core': 15.1.5_rxjs@7.8.0+zone.js@0.11.8
-  '@angular/flex-layout': 15.0.0-beta.42_ymamwswbxeej7a4zmpnky563te
   '@angular/forms': 15.1.5_yndgxvmaauschrcdo656cxz5sy
   '@angular/material': 15.2.0_b3gwk7z54cnaqfqf3e3fx3a2xy
   '@angular/platform-browser': 15.1.5_s7kwnqxnlkypgp4vtemlnxkbmi
@@ -461,24 +459,6 @@ packages:
       rxjs: 7.8.0
       tslib: 2.5.0
       zone.js: 0.11.8
-
-  /@angular/flex-layout/15.0.0-beta.42_ymamwswbxeej7a4zmpnky563te:
-    resolution: {integrity: sha512-cTAPVMMxnyIFwpZwdq0PL5mdP9Qh+R8MB7ZBezVaN3Rz2fRrkagzKpLvPX3TFzepXrvHBdpKsU4b8u+NxEC/6g==}
-    deprecated: This package has been deprecated. Please see https://blog.angular.io/modern-css-in-angular-layouts-4a259dca9127
-    peerDependencies:
-      '@angular/cdk': '>=15.0.0'
-      '@angular/common': '>=15.0.2'
-      '@angular/core': '>=15.0.2'
-      '@angular/platform-browser': '>=15.0.2'
-      rxjs: ^6.5.3 || ^7.4.0
-    dependencies:
-      '@angular/cdk': 15.2.0_pq7so2lxnramwprfbopfupfyze
-      '@angular/common': 15.1.5_bj7gay3f2iqhd2jhj4xbvfa7uq
-      '@angular/core': 15.1.5_rxjs@7.8.0+zone.js@0.11.8
-      '@angular/platform-browser': 15.1.5_s7kwnqxnlkypgp4vtemlnxkbmi
-      rxjs: 7.8.0
-      tslib: 2.5.0
-    dev: false
 
   /@angular/forms/15.1.5_yndgxvmaauschrcdo656cxz5sy:
     resolution: {integrity: sha512-FnuEdyYs1o/DJepLpTsY2/GwKTEXJ7sZlQb+NKkRWOoGpA0E4nSbhn3aCUic++MTgbZyHO0rmFKnD8TI2yyJDA==}

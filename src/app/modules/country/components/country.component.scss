@@ -9,16 +9,8 @@
   align-items: center;
   row-gap: 2rem;
 }
-.country__header-container {
+.country__header {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.country__title {
-  font-size: $title-font-size;
-  font-weight: bold;
-  margin: 2rem 0;
 }
 .country__card {
   padding: 2rem;

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -6,16 +6,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements AfterViewInit, OnInit {
+export class NavbarComponent {
   regionName!: string | null;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     this.regionName = this.activatedRoute.snapshot.paramMap.get('regionName');
-    //console.log(this.regionName);
   }
-
-  ngOnInit(): void {}
-  ngAfterViewInit() {}
 
   navigateHome(): void {
     this.router.navigate(['/']);

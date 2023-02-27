@@ -10,8 +10,8 @@ import { CoreModule } from './core/core.module';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './modules/material/material.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from './shared/shared.module';
+import { AboutMePopupComponent } from './layout/footer/about-me-popup/about-me-popup.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +19,7 @@ import { SharedModule } from './shared/shared.module';
     FooterComponent,
     NavbarComponent,
     ContentLayoutComponent,
+    AboutMePopupComponent,
   ],
   imports: [
     CoreModule,
@@ -28,7 +29,6 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
-    FlexLayoutModule,
     SharedModule,
   ],
   providers: [],

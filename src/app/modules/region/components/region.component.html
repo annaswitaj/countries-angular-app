@@ -1,19 +1,11 @@
-<div class="region" ngClass.lt-md="mobile">
-  <div class="region__header-container">
-    <div class="region__title">Region: {{ regionName }}</div>
-    <a
-      mat-raised-button
-      class="regions__button"
-      routerLink="../"
-      color="primary"
-    >
-      cofnij
-    </a>
-  </div>
+<div class="region">
+  <app-header class="region__header" [title]="'Region: ' + regionName">
+  </app-header>
   <mat-spinner
     *ngIf="dataSource.length === 0 && !showNotFoundMessage"
   ></mat-spinner>
   <app-not-found-card
+    area="region"
     [value]="regionName"
     *ngIf="showNotFoundMessage"
   ></app-not-found-card>

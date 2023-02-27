@@ -1,17 +1,21 @@
-<div class="country" ngClass.lt-md="mobile" *ngIf="countryDetails">
-  <div class="country__header-container">
-    <div class="country__title">{{ countryDetails.name.common }}</div>
-    <a
-      mat-raised-button
-      class="country__button"
-      routerLink="../"
-      color="primary"
-    >
-      cofnij
-    </a>
-  </div>
+<div class="country">
+  <app-header
+    class="country__header"
+    [title]="
+      countryDetails && countryDetails.name && countryDetails.name.common
+        ? countryDetails.name.common
+        : countryCode
+    "
+  >
+  </app-header>
 
-  <mat-card class="country__card" *ngIf="currencies">
+  <mat-spinner *ngIf="!countryDetails && !showNotFoundMessage"></mat-spinner>
+  <app-not-found-card
+    area="kraj"
+    [value]="countryCode"
+    *ngIf="showNotFoundMessage"
+  ></app-not-found-card>
+  <mat-card class="country__card" *ngIf="countryDetails && currencies">
     <mat-card-header>
       <mat-card-title-group class="country__card-header">
         <mat-card-title class="country__card-header--title">{{
@@ -44,4 +48,3 @@
     </mat-card-content>
   </mat-card>
 </div>
-<mat-spinner *ngIf="!countryDetails"></mat-spinner>
