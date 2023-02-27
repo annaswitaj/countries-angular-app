@@ -16,16 +16,16 @@
     [dataSource]="dataSource"
     class="region__table mat-elevation-z8"
   >
-    <ng-container matColumnDef="position">
+    <ng-container matColumnDef="flag">
       <mat-header-cell *matHeaderCellDef>Flaga</mat-header-cell>
-      <mat-cell *matCellDef="let element" routerLink="{{ element.name }}"
+      <mat-cell *matCellDef="let element" routerLink="{{ element.cca2 }}"
         ><img class="img__flag" [src]="element.flag" loading="lazy"
       /></mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef>Nazwa Państwa</mat-header-cell>
-      <mat-cell *matCellDef="let element" routerLink="{{ element.name }}">{{
+      <mat-cell *matCellDef="let element" routerLink="{{ element.cca2 }}">{{
         element.name
       }}</mat-cell>
     </ng-container>

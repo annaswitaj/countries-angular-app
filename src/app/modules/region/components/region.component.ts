@@ -26,8 +26,6 @@ export class RegionComponent implements OnInit {
 
   ngOnInit(): void {
     this.regionName = this.activatedRoute.snapshot.paramMap.get('regionName');
-    console.log(this.regionName);
-
     this.getCountriesByRegion();
   }
 
@@ -41,6 +39,7 @@ export class RegionComponent implements OnInit {
             this.dataSource.push({
               flag: country.flags.png,
               name: country.name.common,
+              cca2: country.cca2,
             });
           });
         });

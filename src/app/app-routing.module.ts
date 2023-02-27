@@ -27,7 +27,7 @@ export const appRoutes: Routes = [
           import('./modules/region/region.module').then((m) => m.RegionModule),
       },
       {
-        path: 'regions/:regionName/:countryName',
+        path: 'regions/:regionName/:countryCode',
         loadChildren: () =>
           import('./modules/country/country.module').then(
             (m) => m.CountryModule

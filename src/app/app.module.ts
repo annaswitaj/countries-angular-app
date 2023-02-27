@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './modules/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HttpClientModule,
     MaterialModule,
     FlexLayoutModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

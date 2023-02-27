@@ -1,0 +1,42 @@
+@import '_variables';
+
+.country {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 80vw;
+  max-width: $max-width-content;
+  align-items: center;
+  row-gap: 2rem;
+}
+.country__header-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.country__title {
+  font-size: $title-font-size;
+  font-weight: bold;
+  margin: 2rem 0;
+}
+.country__card {
+  padding: 2rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.country__card-header {
+  margin-bottom: 2rem;
+}
+
+.country__card-header--title {
+  font-size: $title-font-size;
+}
+
+.country__card-header--image {
+  width: 8rem;
+}
+
+.country__card-content--text {
+  padding: 1rem 0;
+}

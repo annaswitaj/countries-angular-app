@@ -13,7 +13,7 @@ const publicApiUrl = environment.apiBaseUrl;
 })
 export class PublicService {
   private _countries = new Map<string, CountryGeneral[]>();
-  private _countryDetails = new Map<string, any[]>();
+  private _countryDetails = new Map<string, CountryDetails>();
 
   constructor(private baseService: BaseService) {}
 
@@ -23,7 +23,7 @@ export class PublicService {
     } else {
       const req = this.baseService.httpClient
         .get<CountryGeneral[]>(
-          `${publicApiUrl}region/${region}?fields=name,flags,currencies,capital,population`
+          `${publicApiUrl}region/${region}?fields=name,flags,cca2`
         )
         .pipe(
           tap((countries: CountryGeneral[]) => {
@@ -38,21 +38,21 @@ export class PublicService {
     }
   }
 
-  getCountryDetailsByName(countryName: string): Observable<CountryDetails[]> {
+  getCountryDetailsByName(countryCode: string): Observable<CountryDetails> {
     console.log(this._countryDetails);
-    if (this._countryDetails && this._countryDetails.get(countryName)) {
-      return of(this._countryDetails.get(countryName)) as Observable<
-        CountryDetails[]
-      >;
+    if (this._countryDetails && this._countryDetails.get(countryCode)) {
+      return of(
+        this._countryDetails.get(countryCode)
+      ) as Observable<CountryDetails>;
     } else {
       const req = this.baseService.httpClient
-        .get<CountryDetails[]>(
-          `${publicApiUrl}name/${countryName}?fullText=true,fields=name,flags,currencies,capital,population`
+        .get<CountryDetails>(
+          `${publicApiUrl}alpha/${countryCode}?fields=name,flags,currencies,capital,population,cca2`
         )
         .pipe(
-          tap((countryDetails: CountryDetails[]) => {
+          tap((countryDetails: CountryDetails) => {
             console.log(countryDetails);
-            this._countryDetails.set(countryName, countryDetails);
+            this._countryDetails.set(countryCode, countryDetails);
           }),
           catchError((error: HttpErrorResponse) =>
             this.baseService.showError(error)
