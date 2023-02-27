@@ -4,6 +4,7 @@ import { RegionRoutingModule } from './region-routing.module';
 import { RegionComponent } from './components/region.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../material/material.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [RegionComponent],
@@ -12,6 +13,7 @@ import { MaterialModule } from '../material/material.module';
     MaterialModule,
     RegionRoutingModule,
     HttpClientModule,
+    SharedModule,
   ],
 })
 export class RegionModule {}

@@ -25,6 +25,10 @@ export class CountryComponent implements OnInit {
     this.getCountryDetailsByName();
   }
 
+  trackByFn(index: unknown, item: any) {
+    return item.id;
+  }
+
   private getCountryDetailsByName(): void {
     if (this.countryCode) {
       this.publicService
@@ -38,9 +42,5 @@ export class CountryComponent implements OnInit {
           console.log(this.countryDetails);
         });
     }
-  }
-
-  trackByFn(index: unknown, item: any) {
-    return item.id;
   }
 }

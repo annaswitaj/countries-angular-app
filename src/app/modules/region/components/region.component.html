@@ -10,7 +10,13 @@
       cofnij
     </a>
   </div>
-
+  <mat-spinner
+    *ngIf="dataSource.length === 0 && !showNotFoundMessage"
+  ></mat-spinner>
+  <app-not-found-card
+    [value]="regionName"
+    *ngIf="showNotFoundMessage"
+  ></app-not-found-card>
   <mat-table
     *ngIf="dataSource.length !== 0"
     [dataSource]="dataSource"

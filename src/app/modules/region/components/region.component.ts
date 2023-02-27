@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NotFoundError, Observable } from 'rxjs';
 
 import {
   CountriesTable,
@@ -18,6 +19,7 @@ export class RegionComponent implements OnInit {
   displayedColumns: string[] = ['flag', 'name'];
   dataSource: CountriesTable[] = [];
   countries!: CountryGeneral[] | undefined;
+  showNotFoundMessage = false;
 
   constructor(
     private publicService: PublicService,
@@ -31,9 +33,8 @@ export class RegionComponent implements OnInit {
 
   private getCountriesByRegion(): void {
     if (this.regionName) {
-      this.publicService
-        .getCountriesByRegion(this.regionName)
-        .subscribe((countries) => {
+      this.publicService.getCountriesByRegion(this.regionName).subscribe(
+        (countries) => {
           this.countries = countries;
           this.countries.map((country) => {
             this.dataSource.push({
@@ -42,7 +43,13 @@ export class RegionComponent implements OnInit {
               cca2: country.cca2,
             });
           });
-        });
+        },
+        (err) => {
+          if (err.status == 404) {
+            this.showNotFoundMessage = true;
+          }
+        }
+      );
     }
   }
 }

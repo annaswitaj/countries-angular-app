@@ -9,4 +9,8 @@ import { regions } from 'src/app/core/consts/regions';
 })
 export class RegionsComponent {
   regions = regions;
+
+  trackByFn(index: unknown, item: any) {
+    return item.id;
+  }
 }

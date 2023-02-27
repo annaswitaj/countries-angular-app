@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatIconModule,
     MatTableModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     MatCardModule,
@@ -20,6 +22,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatIconModule,
     MatTableModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class MaterialModule {}
