@@ -9,12 +9,6 @@
   >
   </app-header>
 
-  <mat-spinner *ngIf="!countryDetails && !showNotFoundMessage"></mat-spinner>
-  <app-not-found-card
-    area="kraj"
-    [value]="countryCode"
-    *ngIf="showNotFoundMessage"
-  ></app-not-found-card>
   <mat-card class="country__card" *ngIf="countryDetails && currencies">
     <mat-card-header>
       <mat-card-title-group class="country__card-header">

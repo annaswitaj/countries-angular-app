@@ -1,48 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CountryDetails, Currency } from 'src/app/core/models/country.model';
-import { PublicService } from 'src/app/core/sevices/public.service';
+import { CountriesService } from 'src/app/core/sevices/countries.service';
 
 @Component({
   selector: 'app-country',
   templateUrl: './country.component.html',
   styleUrls: ['./country.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CountryComponent implements OnInit {
   countryDetails!: CountryDetails;
   countryCode!: string | null;
   currencies!: Currency[];
-  showNotFoundMessage = false;
 
   constructor(
-    private publicService: PublicService,
+    private CountriesService: CountriesService,
     private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.countryCode = this.activatedRoute.snapshot.paramMap.get('countryCode');
 
-    this.getCountryDetailsByName();
+    this.getCountryDetailsByCountryCode();
   }
 
-  trackByFn(index: unknown, item: any) {
+  trackByFn(item: any) {
     return item.id;
   }
 
-  private getCountryDetailsByName(): void {
+  private getCountryDetailsByCountryCode(): void {
     if (this.countryCode) {
-      this.publicService.getCountryDetailsByName(this.countryCode).subscribe(
-        (countryDetails) => {
-          this.countryDetails = countryDetails;
+      this.CountriesService.getCountryDetailsByCountryCode(
+        this.countryCode
+      ).subscribe((countryDetails) => {
+        this.countryDetails = countryDetails;
 
-          this.currencies = Object.values(countryDetails.currencies);
-        },
-        (err) => {
-          if (err.status == 404 || err.status == 400) {
-            this.showNotFoundMessage = true;
-          }
-        }
-      );
+        this.currencies = Object.values(countryDetails.currencies);
+      });
     }
   }
 }

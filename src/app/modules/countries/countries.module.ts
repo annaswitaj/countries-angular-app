@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegionRoutingModule } from './region-routing.module';
-import { RegionComponent } from './components/region.component';
+import { RegionRoutingModule } from './countries-routing.module';
+import { CountriesComponent } from './components/countries.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [RegionComponent],
+  declarations: [CountriesComponent],
   imports: [
     CommonModule,
     MaterialModule,

@@ -1,19 +1,8 @@
 <div class="region">
   <app-header class="region__header" [title]="'Region: ' + regionName">
   </app-header>
-  <mat-spinner
-    *ngIf="dataSource.length === 0 && !showNotFoundMessage"
-  ></mat-spinner>
-  <app-not-found-card
-    area="region"
-    [value]="regionName"
-    *ngIf="showNotFoundMessage"
-  ></app-not-found-card>
-  <mat-table
-    *ngIf="dataSource.length !== 0"
-    [dataSource]="dataSource"
-    class="region__table mat-elevation-z8"
-  >
+
+  <mat-table [dataSource]="dataSource" class="region__table mat-elevation-z8">
     <ng-container matColumnDef="flag">
       <mat-header-cell *matHeaderCellDef>Flaga</mat-header-cell>
       <mat-cell *matCellDef="let element" routerLink="{{ element.cca2 }}"

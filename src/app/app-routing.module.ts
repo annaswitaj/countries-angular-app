@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CountriesResolver } from './core/resolvers/countries.resolver';
+import { CountryResolver } from './core/resolvers/country.resolver';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 export const appRoutes: Routes = [
   {
@@ -24,7 +27,12 @@ export const appRoutes: Routes = [
       {
         path: 'regions/:regionName',
         loadChildren: () =>
-          import('./modules/region/region.module').then((m) => m.RegionModule),
+          import('./modules/countries/countries.module').then(
+            (m) => m.RegionModule
+          ),
+        resolve: {
+          countries: CountriesResolver,
+        },
       },
       {
         path: 'regions/:regionName/:countryCode',
@@ -32,16 +40,19 @@ export const appRoutes: Routes = [
           import('./modules/country/country.module').then(
             (m) => m.CountryModule
           ),
+        resolve: {
+          country: CountryResolver,
+        },
       },
       {
         path: '**',
-        redirectTo: 'regions',
+        component: NotFoundComponent,
       },
     ],
   },
   {
     path: '**',
-    redirectTo: 'regions',
+    component: NotFoundComponent,
   },
 ];
 

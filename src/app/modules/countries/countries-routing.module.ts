@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegionComponent } from './components/region.component';
+import { CountriesComponent } from './components/countries.component';
 
 export const regionRoutes: Routes = [
   {
     path: '',
-    component: RegionComponent,
+    component: CountriesComponent,
   },
 ];
 

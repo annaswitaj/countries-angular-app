@@ -11,7 +11,7 @@ const publicApiUrl = environment.apiBaseUrl;
 @Injectable({
   providedIn: 'root',
 })
-export class PublicService {
+export class CountriesService {
   private _countries = new Map<string, CountryGeneral[]>();
   private _countryDetails = new Map<string, CountryDetails>();
 
@@ -38,7 +38,9 @@ export class PublicService {
     }
   }
 
-  getCountryDetailsByName(countryCode: string): Observable<CountryDetails> {
+  getCountryDetailsByCountryCode(
+    countryCode: string
+  ): Observable<CountryDetails> {
     if (this._countryDetails && this._countryDetails.get(countryCode)) {
       return of(
         this._countryDetails.get(countryCode)

@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotFoundCardComponent } from './not-found-card.component';
+import { CountriesComponent } from './countries.component';
 
-describe('NotFoundCardComponent', () => {
-  let component: NotFoundCardComponent;
-  let fixture: ComponentFixture<NotFoundCardComponent>;
+describe('CountriesComponent', () => {
+  let component: CountriesComponent;
+  let fixture: ComponentFixture<CountriesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NotFoundCardComponent],
+      declarations: [CountriesComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NotFoundCardComponent);
+    fixture = TestBed.createComponent(CountriesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

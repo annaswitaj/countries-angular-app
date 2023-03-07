@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { regions } from 'src/app/core/consts/regions';
 
@@ -6,11 +6,12 @@ import { regions } from 'src/app/core/consts/regions';
   selector: 'app-regions',
   templateUrl: './regions.component.html',
   styleUrls: ['./regions.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegionsComponent {
   regions = regions;
 
-  trackByFn(index: unknown, item: any) {
+  trackByFn(item: any) {
     return item.id;
   }
 }
