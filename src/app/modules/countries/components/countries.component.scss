@@ -1,6 +1,6 @@
 @import '_variables';
 
-.region {
+.countries {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -10,14 +10,25 @@
   row-gap: 2rem;
 }
 
-.region__header {
+.countries__header {
   width: 100%;
 }
-.region__table {
+.mdc-button {
+  width: 100%;
+}
+.mdc-button ::ng-deep .mdc-button__label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 70%;
+}
+.countries__table {
   margin-bottom: 2rem;
 }
-.img__flag {
+.countries__table--flag {
   width: 3rem;
+  margin-right: 4rem;
 }
 
 .mat-mdc-table {
@@ -31,7 +42,4 @@
 
 .mat-mdc-row:hover .mat-mdc-cell {
   background-color: $background-color-hover;
-}
-.mat-column-name {
-  height: 4rem;
 }

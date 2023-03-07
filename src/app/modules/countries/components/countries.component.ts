@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { CountriesDataSource } from 'src/app/core/sevices/countries.dataSource';
 
@@ -14,12 +14,13 @@ import { CountriesService } from 'src/app/core/sevices/countries.service';
 })
 export class CountriesComponent implements OnInit {
   regionName!: string | null;
-  displayedColumns: string[] = ['flag', 'name'];
+  displayedColumns: string[] = ['name'];
   dataSource = new CountriesDataSource(this.CountriesService);
 
   constructor(
     private CountriesService: CountriesService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -27,5 +28,9 @@ export class CountriesComponent implements OnInit {
     if (this.regionName) {
       this.dataSource.loadCountries(this.regionName);
     }
+  }
+
+  navigate(cca2: string): void {
+    this.router.navigate([cca2]);
   }
 }
