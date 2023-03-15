@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { map, Observable } from 'rxjs';
 import { CountryDetails, Currency } from 'src/app/core/models/country.model';
 import { CountriesService } from 'src/app/core/sevices/countries.service';
 
@@ -10,9 +11,9 @@ import { CountriesService } from 'src/app/core/sevices/countries.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CountryComponent implements OnInit {
-  countryDetails!: CountryDetails;
+  countryDetails$!: Observable<CountryDetails>;
   countryCode!: string | null;
-  currencies!: Currency[];
+  currencies$!: Observable<Currency[]>;
 
   constructor(
     private CountriesService: CountriesService,
@@ -22,22 +23,29 @@ export class CountryComponent implements OnInit {
   ngOnInit(): void {
     this.countryCode = this.activatedRoute.snapshot.paramMap.get('countryCode');
 
-    this.getCountryDetailsByCountryCode();
+    if (this.countryCode) {
+      this.setCountryDetailsByCode(this.countryCode);
+    }
   }
 
   trackByFn(item: any) {
     return item.id;
   }
 
-  private getCountryDetailsByCountryCode(): void {
-    if (this.countryCode) {
-      this.CountriesService.getCountryDetailsByCountryCode(
-        this.countryCode
-      ).subscribe((countryDetails) => {
-        this.countryDetails = countryDetails;
+  private setCountryDetailsByCode(countryCode: string): void {
+    this.countryDetails$ =
+      this.CountriesService.getCountryDetailsByCountryCode(countryCode);
 
-        this.currencies = Object.values(countryDetails.currencies);
-      });
+    if (this.countryDetails$) {
+      this.setCurrenciesByCountryDetails(this.countryDetails$);
     }
+  }
+
+  private setCurrenciesByCountryDetails(
+    countryDetails$: Observable<CountryDetails>
+  ): void {
+    this.currencies$ = countryDetails$.pipe(
+      map((countryDetails) => Object.values(countryDetails.currencies))
+    );
   }
 }

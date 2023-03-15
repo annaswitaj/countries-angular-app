@@ -1,19 +1,15 @@
-<div class="country">
+<div class="country" *ngIf="countryDetails$ | async as countryDetails">
   <app-header
     class="country__header"
-    [title]="
-      countryDetails && countryDetails.name && countryDetails.name.common
-        ? countryDetails.name.common
-        : countryCode
-    "
+    [title]="countryDetails.name.common && countryCode"
   >
   </app-header>
 
-  <mat-card class="country__card" *ngIf="countryDetails && currencies">
+  <mat-card class="country__card">
     <mat-card-header>
       <mat-card-title-group class="country__card-header">
         <mat-card-title class="country__card-header--title">{{
-          countryDetails.cca2
+          countryDetails?.cca2
         }}</mat-card-title>
 
         <img
@@ -30,7 +26,7 @@
       <mat-divider></mat-divider>
       <p class="country__card-content--text">
         <span>Waluta: </span>
-        <span *ngFor="let currency of currencies; trackBy: trackByFn"
+        <span *ngFor="let currency of currencies$ | async; trackBy: trackByFn"
           >- {{ currency.name }}
         </span>
       </p>
