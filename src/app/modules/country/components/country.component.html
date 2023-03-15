@@ -1,7 +1,7 @@
 <div class="country" *ngIf="countryDetails$ | async as countryDetails">
   <app-header
     class="country__header"
-    [title]="countryDetails.name.common && countryCode"
+    [title]="'Country: ' + countryDetails.name.common"
   >
   </app-header>
 
