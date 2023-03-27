@@ -14,7 +14,19 @@ const publicApiUrl = environment.apiBaseUrl;
 export class CountriesService {
   private _countries = new Map<string, CountryGeneral[]>();
   private _countryDetails = new Map<string, CountryDetails>();
-
+  private countriesByRegionFields: (keyof CountryGeneral)[] = [
+    'name',
+    'flags',
+    'cca2',
+  ];
+  private countryDetailsByCountryCodeFields: (keyof CountryDetails)[] = [
+    'name',
+    'flags',
+    'cca2',
+    'currencies',
+    'capital',
+    'population',
+  ];
   constructor(private baseService: BaseService) {}
 
   getCountriesByRegion(region: string): Observable<CountryGeneral[]> {
@@ -23,7 +35,9 @@ export class CountriesService {
     } else {
       const req = this.baseService.httpClient
         .get<CountryGeneral[]>(
-          `${publicApiUrl}region/${region}?fields=name,flags,cca2`
+          `${publicApiUrl}/region/${region}?fields=${this.countriesByRegionFields.join(
+            ','
+          )}`
         )
         .pipe(
           tap((countries: CountryGeneral[]) => {
@@ -48,7 +62,9 @@ export class CountriesService {
     } else {
       const req = this.baseService.httpClient
         .get<CountryDetails>(
-          `${publicApiUrl}alpha/${countryCode}?fields=name,flags,currencies,capital,population,cca2`
+          `${publicApiUrl}/alpha/${countryCode}?fields=${this.countryDetailsByCountryCodeFields.join(
+            ','
+          )}`
         )
         .pipe(
           tap((countryDetails: CountryDetails) => {

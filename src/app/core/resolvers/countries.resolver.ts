@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { catchError, EMPTY, Observable } from 'rxjs';
-import { CountriesService } from '../sevices/countries.service';
+import { CountriesService } from '../services/countries.service';
 import { CountryGeneral } from '../models/country.model';
 
 @Injectable({

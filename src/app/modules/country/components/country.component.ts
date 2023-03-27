@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { CountryDetails, Currency } from 'src/app/core/models/country.model';
-import { CountriesService } from 'src/app/core/sevices/countries.service';
+import { CountriesService } from 'src/app/core/services/countries.service';
 
 @Component({
   selector: 'app-country',

@@ -6,7 +6,7 @@ export interface CountryGeneral {
 }
 
 export interface CountryDetails extends CountryGeneral {
-  currencies: { [key: string]: Currency };
+  currencies: Record<string, Currency>;
   capital: string[];
   population: number;
 }
@@ -20,7 +20,7 @@ export interface Currency {
   symbol: string;
 }
 
-export interface CountriesTable {
+export interface CountriesRowTable {
   flag: string;
   name: string;
   cca2: string;

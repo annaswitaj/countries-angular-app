@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { CountriesDataSource } from 'src/app/core/sevices/countries.dataSource';
+import { CountriesDataSource } from 'src/app/core/services/countries.dataSource';
 
-import { CountriesService } from 'src/app/core/sevices/countries.service';
+import { CountriesService } from 'src/app/core/services/countries.service';
 
 @Component({
   selector: 'app-countries',
@@ -13,7 +13,7 @@ import { CountriesService } from 'src/app/core/sevices/countries.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CountriesComponent implements OnInit {
-  regionName!: string | null;
+  regionName: string | null = '';
   displayedColumns: string[] = ['name'];
   dataSource = new CountriesDataSource(this.CountriesService);
 

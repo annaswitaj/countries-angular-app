@@ -6,9 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class NumberSuffixPipe implements PipeTransform {
   transform(input: number, args?: any): any {
-    let exp;
+    let exponent: number;
     const suffixes = ['tys.', 'mln', 'mld'];
-    const isNagtiveValues = input < 0;
+    const isNagativeValues = input < 0;
     if (
       Number.isNaN(input) ||
       (input < 1000 && input >= 0) ||
@@ -22,20 +22,29 @@ export class NumberSuffixPipe implements PipeTransform {
       }
     }
 
-    if (!isNagtiveValues) {
-      exp = Math.floor(Math.log(input) / Math.log(1000));
+    if (!isNagativeValues) {
+      exponent = this.calculateExponent(input);
 
-      return (input / Math.pow(1000, exp)).toFixed(args) + suffixes[exp - 1];
+      return (
+        (input / Math.pow(1000, exponent)).toFixed(args) +
+        suffixes[exponent - 1]
+      );
     } else {
       input = input * -1;
 
-      exp = Math.floor(Math.log(input) / Math.log(1000));
+      exponent = this.calculateExponent(input);
 
       return (
-        ((input * -1) / Math.pow(1000, exp)).toFixed(args) + suffixes[exp - 1]
+        ((input * -1) / Math.pow(1000, exponent)).toFixed(args) +
+        suffixes[exponent - 1]
       );
     }
   }
+
+  calculateExponent(input: number): number {
+    return Math.floor(Math.log(input) / Math.log(1000));
+  }
+
   isNumeric(value: number): boolean {
     if (value < 0) value = value * -1;
     if (/^-{0,1}\d+$/.test(value.toString())) {
